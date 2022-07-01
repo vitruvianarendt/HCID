@@ -25,7 +25,7 @@ from HW5App.views import index
 urlpatterns = [
 
    # path('', include('HW5App.urls')),
-    path('posts/', index, name="index"),
+    path('https://hcid-scienceapp.herokuapp.com/posts/', index, name="index"),
 
     #            // path('admin/', admin.site.urls)
                   # path('admin/', admin.site.urls),
