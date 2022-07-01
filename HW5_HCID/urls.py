@@ -17,30 +17,27 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.template.defaulttags import url
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 from HW5App.views import index
 
 urlpatterns = [
     # path('/app/admin/', admin.site.urls),
-    path(r'^$', index, name="index"),
-                  # url(r'^$', 'views.home'),
-                  #
-    url(r'^admin/', include(admin.site.urls)),
-
+    # path(r'^$', index, name="index"),
+    #               # url(r'^$', 'views.home'),
+    #               #
+    # url(r'^admin/', include(admin.site.urls)),
+    re_path(r'^$', index, name='index'),
+    # re_path(r'^bio/(?P<username>\w+)/$', views.bio, name='bio'),
+    # re_path(r'^blog/', include('blog.urls')),
+    url(r'admin/', admin.site.urls)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
 # urlpatterns = patterns('',
-#     url(r'^$', 'views.home'),
-#     url(r'^archives/$', 'views.archives'),
+#     url(r'^$', 'index'),
 #     url(r'^admin/', include(admin.site.urls)),
 #     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),
-#     url('^contact/$', 'views.contact'),
-#     url('^about/$', 'views.about'),
-#
-#     #blog
-#     url(r'^post/(?P<pid>\d+)/', 'blog.views.show_post'),
-#     url(r'^tag/(?P<name>.+)/$', 'blog.views.list_by_tag'),
-#     url(r'^feed/$', LatestPostFeed()),
-#     url(r'^upload-image/', 'blog.views.upload_image'),
 #
 # )
