@@ -23,7 +23,10 @@ from django.views.generic import RedirectView
 from HW5App.views import index
 
 urlpatterns = [
-    path('', include('HW5App.urls')),
-    path('admin/', admin.site.urls)
+
+   # path('', include('HW5App.urls')),
+    path('posts/', index, name="index"),
+
+    #            // path('admin/', admin.site.urls)
                   # path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
