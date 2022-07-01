@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-61z32d&q(h1rpflk_dp53mf@x71psoy*5&&5(tox-(m&i_vx0*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hcid-scienceapp.herokuapp.com']
+ALLOWED_HOSTS = ['hcid-scienceapp.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -117,7 +117,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+#     '/var/www/static/',
+# ]
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static/')
+ROOT_PATH = os.path.dirname(__file__)
+STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
