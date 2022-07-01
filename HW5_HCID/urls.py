@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.template.defaulttags import url
 from django.urls import path, include, re_path
+from django.views.generic import RedirectView
 
 from HW5App.views import index
 
@@ -30,8 +31,9 @@ urlpatterns = [
    #// re_path(r'^$', index, name='index'),
     # re_path(r'^bio/(?P<username>\w+)/$', views.bio, name='bio'),
     # re_path(r'^blog/', include('blog.urls')),
-    re_path(r'^$', 'index'),
-    re_path(r'admin/', include('admin.site.urls'))
+    # re_path(r'^$', 'index'),
+    # re_path(r'admin/', include('admin.site.urls'))
+    re_path(r'^$', RedirectView.as_view(url='/admin'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
