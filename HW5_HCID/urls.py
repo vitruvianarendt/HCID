@@ -23,26 +23,6 @@ from django.views.generic import RedirectView
 from HW5App.views import index
 
 urlpatterns = [
-    # path('/app/admin/', admin.site.urls),
-    # path(r'^$', index, name="index"),
-    #               # url(r'^$', 'views.home'),
-    #               #
-    # url(r'^admin/', include(admin.site.urls)),
-   #// re_path(r'^$', index, name='index'),
-    # re_path(r'^bio/(?P<username>\w+)/$', views.bio, name='bio'),
-    # re_path(r'^blog/', include('blog.urls')),
-    # re_path(r'^$', 'index'),
-    # re_path(r'admin/', include('admin.site.urls'))
-    # re_path(r'^$', RedirectView.as_view(url='/admin'))
     path('', include('HW5App.urls')),
    # path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
-# urlpatterns = patterns('',
-#     url(r'^$', 'index'),
-#     url(r'^admin/', include(admin.site.urls)),
-#     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),
-#
-# )
