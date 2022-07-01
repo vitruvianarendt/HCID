@@ -16,16 +16,17 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.template.defaulttags import url
+from django.urls import path, include
 
 from HW5App.views import index
 
 urlpatterns = [
     # path('/app/admin/', admin.site.urls),
-     path(r'^$', index, name="index"),
+    path(r'^$', index, name="index"),
                   # url(r'^$', 'views.home'),
                   #
-                  # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns = patterns('',
