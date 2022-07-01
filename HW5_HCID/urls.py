@@ -33,7 +33,9 @@ urlpatterns = [
     # re_path(r'^blog/', include('blog.urls')),
     # re_path(r'^$', 'index'),
     # re_path(r'admin/', include('admin.site.urls'))
-    re_path(r'^$', RedirectView.as_view(url='/admin'))
+    # re_path(r'^$', RedirectView.as_view(url='/admin'))
+    path('', include('HW5App.urls')),
+    path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
