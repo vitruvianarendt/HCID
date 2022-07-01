@@ -21,7 +21,25 @@ from django.urls import path
 from HW5App.views import index
 
 urlpatterns = [
-    path('/app/admin/', admin.site.urls),
-    path('', index, name="index"),
+    # path('/app/admin/', admin.site.urls),
+     path(r'^$', index, name="index"),
+                  # url(r'^$', 'views.home'),
+                  #
+                  # url(r'^admin/', include(admin.site.urls)),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns = patterns('',
+#     url(r'^$', 'views.home'),
+#     url(r'^archives/$', 'views.archives'),
+#     url(r'^admin/', include(admin.site.urls)),
+#     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),
+#     url('^contact/$', 'views.contact'),
+#     url('^about/$', 'views.about'),
+#
+#     #blog
+#     url(r'^post/(?P<pid>\d+)/', 'blog.views.show_post'),
+#     url(r'^tag/(?P<name>.+)/$', 'blog.views.list_by_tag'),
+#     url(r'^feed/$', LatestPostFeed()),
+#     url(r'^upload-image/', 'blog.views.upload_image'),
+#
+# )
