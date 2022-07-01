@@ -21,5 +21,5 @@ from django.urls import path
 from HW5App.views import index
 
 urlpatterns = [
-    path('index/', index, name="index"),
+    path('/', index, name="index"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
