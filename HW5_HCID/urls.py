@@ -27,9 +27,10 @@ urlpatterns = [
     #               # url(r'^$', 'views.home'),
     #               #
     # url(r'^admin/', include(admin.site.urls)),
-    re_path(r'^$', index, name='index'),
+   #// re_path(r'^$', index, name='index'),
     # re_path(r'^bio/(?P<username>\w+)/$', views.bio, name='bio'),
     # re_path(r'^blog/', include('blog.urls')),
+    url(r'^$', 'index'),
     url(r'admin/', admin.site.urls)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
