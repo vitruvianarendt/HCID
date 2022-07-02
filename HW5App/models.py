@@ -19,6 +19,7 @@ class AgeGroup(models.Model):
 
 class Course(models.Model):
     title = models.CharField(max_length=50)
+    description = models.TextField(max_length=1000, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     age = models.ForeignKey(AgeGroup, on_delete=models.CASCADE)
 

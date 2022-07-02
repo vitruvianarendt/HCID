@@ -16,14 +16,25 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.template.defaulttags import url
-from django.urls import path, include, re_path
-from django.views.static import serve
-
-from HW5App.views import index
+from django.urls import path
+from HW5App.views import *
 
 urlpatterns = [
     path('', index, name="index"),
+    path('technology/basic/', tech1, name="tech1"),
+    path('technology/intermediate/', tech2, name="tech2"),
+    path('technology/advanced/', tech3, name="tech3"),
+    path('chemistry/basic/', chem1, name="chem1"),
+    path('chemistry/intermediate/', chem2, name="chem2"),
+    path('chemistry/advanced/', chem3, name="chem3"),
+    path('space/basic/', space1, name="space1"),
+    path('space/intermediate/', space2, name="space2"),
+    path('space/advanced/', space3, name="space3"),
+    path('paleonthology/basic/', pal1, name="pal1"),
+    path('paleonthology/intermediate/', pal2, name="pal2"),
+    path('paleonthology/advanced/', pal3, name="pal3"),
+    path('help/', helppage, name="helppage"),
+    path('contact/', contact, name="contact"),
     path('admin/', admin.site.urls),
     # url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 

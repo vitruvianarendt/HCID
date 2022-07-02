@@ -44,7 +44,6 @@
         }
 
         .jumbotron #div1 {
-            margin-top: 8%;
             background-color: #d8bbff;
             border-radius: 30px;
             border-collapse: collapse;
@@ -55,7 +54,7 @@
             padding: 0 !important;
         }
 
-        h1 {
+        .border-top-custom {
             border-top-right-radius: 10px;
             border-top-left-radius: 10px;
         }
@@ -104,7 +103,15 @@
         #endtitle {
             margin-top: 50px;
         }
-         .dropdown-item.active {
+
+        .watch {
+            margin-top: 100px;
+            margin-right: 50px;
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+        }
+                .dropdown-item.active {
             background-color: #3c096c;
         }
     </style>
@@ -134,9 +141,9 @@
                         </a></li>
                         <li id="subtitle">Scientific Topics</li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle " href="#" id="offcanvasNavbarDropdown"
+                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown"
                                role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" >
                                 Technology & Programming
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -144,14 +151,15 @@
                                     aims of human
                                     life.<br> <br> Pick age group below!
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'tech1' %}">5-8 Basic Complexity</a></li>
+                                <li><a class="dropdown-item" href="{% url 'tech1' %}" aria-current="page">5-8 Basic
+                                    Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'tech2' %}">8-12 Moderate Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'tech3' %}">12+ High Complexity</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" >
                                 Space
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -166,8 +174,8 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle active" href="#" id="offcanvasNavbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
                                 Paleontology
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -177,7 +185,7 @@
                                 </li>
                                 <li><a class="dropdown-item" href="{% url 'pal1' %}">5-8 Basic Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'pal2' %}">8-12 Moderate Complexity</a></li>
-                                <li><a class="dropdown-item" href="{% url 'pal3' %}">12+ High Complexity</a></li>
+                                <li><a class="dropdown-item active" href="{% url 'pal3' %}">12+ High Complexity</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -223,30 +231,23 @@
 
     </nav>
 
-    <div class="jumbotron p-4 text-center">
+    <div class="jumbotron p-4 text-left">
         <div id="div1">
-            <h1 class="display-4 pt-4">Hello, kids!</h1>
-            <p class="lead">Welcome to our application!</p>
-{#            <div class="test">#}
-{#                {% for course in courses %}#}
-{#                    <div>#}
-{#                        <div class="card border-0 border-bottom mx-auto my-4 p-3" style="width: 50%; height: 200px">#}
-{#                            <div class="blogger px-4">#}
-{#                                <h5>{{ course.title }}</h5>#}
-{#                            </div>#}
-{##}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-            <hr class="my-4">
-            <p>Click here to get started!</p>
-            <p class="lead">
-                <a class="btn btn-lg" href="#" role="button" data-bs-toggle="offcanvas"
-                   data-bs-target="#offcanvasNavbar"
-                   aria-controls="offcanvasNavbar">Here!</a>
-            </p>
+            <div class="p-4 border-top-custom">
+                <h5>{{ courses.8.topic.title }}</h5>
+                <h5>Suitable for kids {{ courses.8.age.title }} years old!</h5>
+            </div>
+            <div class="p-4">
+                {{ courses.8.description }}
+            </div>
+
+            <img style="float: right; margin-right: 20%; border-radius: 10px; height: 200px"
+                 src="https://www.amnh.org/var/ezflow_site/storage/images/media/amnh/images/our-research/paleontology2/paleontology-listing-images/paleontology-landing-2-2880-1080/3913673-1-eng-US/paleontology-landing-2-2880-1080_facebookshare_1200.jpg">
+            <p class="lead"></p>
         </div>
+
+        <button class="watch">Watch video experiment or tutorial!</button>
+        <button class="watch">Take quiz!</button>
     </div>
 </div>
 </body>
