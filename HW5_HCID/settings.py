@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['hcid-scienceapp.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'HW5App',
-    'whitenoise'
 ]
 
 MIDDLEWARE = [
