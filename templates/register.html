@@ -64,6 +64,8 @@
             border-bottom-left-radius: 10px;
             margin-bottom: 0;
             padding-bottom: 20px;
+            background-color: #9d4edd;
+
         }
 
         .jumbotron a {
@@ -79,6 +81,13 @@
             border-bottom: solid 2px;
             border-top: none;
             padding-top: 20px;
+        }
+
+        .controls ul li {
+            font-size: small;
+            list-style-type: none;
+            border-bottom: none;
+            padding: 0;
         }
 
         .dropdown-menu li {
@@ -111,8 +120,30 @@
             border: none;
             border-radius: 10px;
         }
-                .dropdown-item.active {
+
+        .dropdown-item.active {
             background-color: #3c096c;
+        }
+
+        .custom-form {
+            width: 40%;
+            text-align: center;
+        }
+
+        .bg-custom {
+            background-color: #9d4edd;
+            padding: 20px 0 20px 0;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+        }
+
+        .btn {
+            background-color: #c8e7ff;
+        }
+
+        .login {
+            color: #c8e7ff;
         }
     </style>
 </head>
@@ -141,9 +172,9 @@
                         </a></li>
                         <li id="subtitle">Scientific Topics</li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown"
+                            <a class="nav-link dropdown-toggle active" href="#" id="offcanvasNavbarDropdown"
                                role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false" >
+                               data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
                                 Technology & Programming
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -151,15 +182,16 @@
                                     aims of human
                                     life.<br> <br> Pick age group below!
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'tech1' %}" aria-current="page">5-8 Basic
-                                    Complexity</a></li>
+                                <li><a class="dropdown-item" href="{% url 'tech1' %}">5-8 Basic Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'tech2' %}">8-12 Moderate Complexity</a></li>
-                                <li><a class="dropdown-item" href="{% url 'tech3' %}">12+ High Complexity</a></li>
+                                <li><a class="dropdown-item active" href="{% url 'tech3' %}" aria-current="page">12+
+                                    High
+                                    Complexity</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false" >
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Space
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -175,7 +207,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false" >
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Paleontology
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -189,8 +221,8 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="offcanvasNavbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
+                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Chemistry
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -201,7 +233,7 @@
                                 </li>
                                 <li><a class="dropdown-item" href="{% url 'chem1' %}">5-8 Basic Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'chem2' %}">8-12 Moderate Complexity</a></li>
-                                <li><a class="dropdown-item active" href="{% url 'chem3' %}">12+ High Complexity</a></li>
+                                <li><a class="dropdown-item" href="{% url 'chem3' %}">12+ High Complexity</a></li>
                             </ul>
 
                         </li>
@@ -221,9 +253,9 @@
                                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                             </svg>
                         </a></li>
-                                                <li><a class="dropdown-item" href="{% url 'login' %}" > Login
+                        <li><a class="dropdown-item" href="{% url 'login' %}"> Login
                         </a></li>
-                        <li><a class="dropdown-item" href="{% url 'register' %}" > Register
+                        <li><a class="dropdown-item" href="{% url 'register' %}"> Register
                         </a></li>
                     </ul>
 
@@ -235,24 +267,26 @@
 
     </nav>
 
-    <div class="jumbotron p-4 text-left">
-        <div id="div1">
-            <div class="p-4 border-top-custom">
-                <h5>{{ courses.5.topic.title }}</h5>
-                <h5>Suitable for kids {{ courses.5.age.title }} years old!</h5>
-            </div>
-            <div class="p-4">
-                {{ courses.5.description }}
-            </div>
+    {% block content %}
 
-            <img style="float: right; margin-right: 20%; border-radius: 10px; height: 200px"
-                 src="http://jobs.newscientist.com/getasset/c40a5488-11be-43b0-843f-a2e6ef9f0612/">
-            <p class="lead"></p>
+        {% load crispy_forms_tags %}
+
+        <!--Register-->
+        <div class="bg-custom">
+            <div class="container py-5 custom-form ">
+                <h1>Register</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ register_form|crispy }}
+                    <button class="btn" type="submit">Register</button>
+                </form>
+                <p class="text-center">If you already have an account, <a class="login"
+                                                                          href="{% url 'login' %}">login</a> instead.
+                </p>
+            </div>
         </div>
 
-        <button class="watch">Watch video experiment or tutorial!</button>
-        <button class="watch">Take quiz!</button>
-    </div>
+    {% endblock %}
 </div>
 </body>
 </html>
