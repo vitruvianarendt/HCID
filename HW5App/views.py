@@ -45,6 +45,39 @@ def tech3(request):
     return render(request, "tech3.html", context=context)
 
 
+def tech1tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "tech1tutorial.html", context=context)
+
+
+def tech2tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "tech2tutorial.html", context=context)
+
+
+def tech3tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "tech3tutorial.html", context=context)
+
+
 def chem1(request):
     try:
         courses = Course.objects.all()
@@ -111,6 +144,39 @@ def pal3(request):
     return render(request, "pal3.html", context=context)
 
 
+def pal1tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "pal1tutorial.html", context=context)
+
+
+def pal2tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "pal2tutorial.html", context=context)
+
+
+def pal3tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "pal3tutorial.html", context=context)
+
+
 def space1(request):
     try:
         courses = Course.objects.all()
@@ -144,6 +210,39 @@ def space3(request):
     return render(request, "space3.html", context=context)
 
 
+def space1tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "space1tutorial.html", context=context)
+
+
+def space2tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "space2tutorial.html", context=context)
+
+
+def space3tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "space3tutorial.html", context=context)
+
+
 def chem1tutorial(request):
     try:
         courses = Course.objects.all()
@@ -153,6 +252,28 @@ def chem1tutorial(request):
     context = {"courses": list(courses)}
 
     return render(request, "chem1tutorial.html", context=context)
+
+
+def chem2tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "chem2tutorial.html", context=context)
+
+
+def chem3tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "chem3tutorial.html", context=context)
 
 
 def helppage(request):

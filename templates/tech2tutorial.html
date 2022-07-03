@@ -1,3 +1,4 @@
+{% load embed_video_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,6 +90,7 @@
             border-bottom: solid 1px;
 
         }
+
         h2 li {
             text-decoration: none;
             font-size: medium;
@@ -97,6 +99,7 @@
             border-top: solid 1px;
             border-bottom: none;
         }
+
         svg {
             margin-left: 20px;
         }
@@ -149,9 +152,9 @@
                         </a></li>
                         <li id="subtitle">Scientific Topics</li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="offcanvasNavbarDropdown"
+                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown"
                                role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Technology & Programming
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -159,11 +162,10 @@
                                     aims of human
                                     life.<br> <br> Pick age group below!
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'tech1' %}">5-8 Basic Complexity</a></li>
-                                <li><a class="dropdown-item" href="{% url 'tech2' %}">8-12 Moderate Complexity</a></li>
-                                <li><a class="dropdown-item active" href="{% url 'tech3' %}" aria-current="page">12+
-                                    High
+                                <li><a class="dropdown-item" href="{% url 'tech1' %}">5-8 Basic
                                     Complexity</a></li>
+                                <li><a class="dropdown-item" href="{% url 'tech2' %}">8-12 Moderate Complexity</a></li>
+                                <li><a class="dropdown-item" href="{% url 'tech3' %}">12+ High Complexity</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -198,7 +200,8 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle active" href="#" id="offcanvasNavbarDropdown"
+                               role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Chemistry
                             </a>
@@ -208,7 +211,8 @@
                                     structure of elements and compounds, how they can change, and the energy that is
                                     released or absorbed when they change. <br> <br> Pick age group below!
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'chem1' %}">5-8 Basic Complexity</a></li>
+                                <li><a class="dropdown-item active" href="{% url 'chem1' %}">5-8 Basic Complexity</a>
+                                </li>
                                 <li><a class="dropdown-item" href="{% url 'chem2' %}">8-12 Moderate Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'chem3' %}">12+ High Complexity</a></li>
                             </ul>
@@ -251,27 +255,33 @@
                     <a class="nav-link" href="#">Welcome, {{ user.username }}</a>
                 </li>
             {% endif %}</h2>
-    </nav>
 
+
+    </nav>
 
     <div class="jumbotron p-4 text-left">
         <div id="div1">
             <div class="p-4 border-top-custom">
-                <h5>{{ courses.2.topic.title }}</h5>
-                <h5>Suitable for kids {{ courses.2.age.title }} years old!</h5>
+                <h5>{{ courses.1.topic.title }}</h5>
+                <h5>Suitable for kids {{ courses.1.age.title }} years old!</h5>
             </div>
             <div class="p-4">
-                {{ courses.2.description }}
+                {{ courses.1.videodescription }}
             </div>
 
-            <img style="float: right; margin-right: 20%; border-radius: 10px; height: 200px"
-                 src="https://prodigy-legacy-images.s3.us-east-2.amazonaws.com/legacy-images/center-for-children-and-technology-1024x684.jpg">
+            <div style="float: right; margin-right: 20%;">
+                {% video courses.1.tutorial_Video 'tiny' %}
+            </div>
             <p class="lead"></p>
         </div>
 
-        <button class="watch" ><a style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c" href="{% url 'tech3tutorial' %}">Watch video experiment or tutorial!</a></button>
+        <button class="watch"><a style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c"
+                                 href="{% url 'tech2' %}">Go back to course!</a></button>
         <button class="watch">Take quiz!</button>
     </div>
 </div>
 </body>
 </html>
+
+
+
