@@ -35,8 +35,10 @@ urlpatterns = [
     path('paleonthology/advanced/', pal3, name="pal3"),
     path('help/', helppage, name="helppage"),
     path('contact/', contact, name="contact"),
-    path("register", register_request, name="register"),
-    path("login", login_request, name="login"),
+    path("register/", register_request, name="register"),
+    path("login/", login_request, name="login"),
+    path("logout/", logout_request, name="logout"),
+    path('chemistry/basic/video/', chem1tutorial, name="chem1tutorial"),
     path('admin/', admin.site.urls),
     # url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 

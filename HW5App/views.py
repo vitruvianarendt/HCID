@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
@@ -144,6 +144,17 @@ def space3(request):
     return render(request, "space3.html", context=context)
 
 
+def chem1tutorial(request):
+    try:
+        courses = Course.objects.all()
+    except Course.DoesNotExist:
+        courses = None
+
+    context = {"courses": list(courses)}
+
+    return render(request, "chem1tutorial.html", context=context)
+
+
 def helppage(request):
     try:
         courses = Course.objects.all()
@@ -196,3 +207,10 @@ def login_request(request):
             messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
     return render(request=request, template_name="login.html", context={"login_form": form})
+
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.")
+    return redirect("index")
+

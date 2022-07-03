@@ -90,7 +90,14 @@
             border-bottom: solid 1px;
 
         }
-
+        h2 li {
+            text-decoration: none;
+            font-size: medium;
+            text-align: center;
+            list-style-type: none;
+            border-top: solid 1px;
+            border-bottom: none;
+        }
         svg {
             margin-left: 20px;
         }
@@ -104,7 +111,8 @@
         #endtitle {
             margin-top: 50px;
         }
-         .dropdown-item.active {
+
+        .dropdown-item.active {
             background-color: #3c096c;
         }
     </style>
@@ -213,18 +221,27 @@
                                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                             </svg>
                         </a></li>
-                                                <li><a class="dropdown-item" href="{% url 'login' %}" > Login
-                        </a></li>
-                        <li><a class="dropdown-item" href="{% url 'register' %}" > Register
-                        </a></li>
+                        {% if user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{% url 'logout' %}"> Logout
+                            </a></li>
+                        {% else %}
+                            <li><a class="dropdown-item" href="{% url 'login' %}"> Login
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'register' %}"> Register
+                            </a></li>
+                        {% endif %}
                     </ul>
 
                 </div>
             </div>
 
         </div>
-        <h2 class="title">Kids Learning Science</h2>
-
+        <h2 class="title">Kids Learning Science <br>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Welcome, {{ user.username }}</a>
+                </li>
+            {% endif %}</h2>
     </nav>
 
     <div class="jumbotron p-4 text-center">
