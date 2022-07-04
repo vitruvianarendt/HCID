@@ -234,7 +234,7 @@
                             </svg>
                         </a></li>
                         {% if user.is_authenticated %}
-                                                        <li><a class="dropdown-item" href="{% url 'results' %}"> See all previously attempted
+                            <li><a class="dropdown-item" href="{% url 'results' %}"> See all previously attempted
                                 quizzes!
                             </a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}"> Logout
@@ -276,8 +276,12 @@
             <p class="lead"></p>
         </div>
 
-        <button class="watch" ><a style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c" href="{% url 'chem2tutorial' %}">Watch video experiment or tutorial!</a></button>
-        <button class="watch"><a style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c" href="{% url 'quiz' %}">Take quiz!</a></button>
+        <button class="watch"><a
+                style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c"
+                href="{% url 'chem2tutorial' %}">Watch video experiment or tutorial!</a></button>
+        <button class="watch"><a
+                style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c"
+                href="{% url 'quiz' %}">Take quiz!</a></button>
     </div>
 </div>
 </body>
