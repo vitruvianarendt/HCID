@@ -296,7 +296,7 @@
         <div class="bg-custom">
             <div class="container py-5 custom-form ">
                 <h1>Register</h1>
-                <form method="POST">
+                <form method="POST" autocomplete="off">
                     {% csrf_token %}
                     {{ register_form|crispy }}
                     <button class="btn" type="submit">Register</button>

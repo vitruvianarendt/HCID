@@ -289,11 +289,11 @@
 
         {% load crispy_forms_tags %}
 
-        <!--Register-->
+        <!--Login-->
         <div class="bg-custom">
             <div class="container p-5 custom-form ">
                 <h1>Login</h1>
-                <form method="POST">
+                <form method="POST" autocomplete="off">
                     {% csrf_token %}
                     {{ login_form|crispy }}
                     <button class="btn mt-4 mb-4" type="submit">Login</button>
