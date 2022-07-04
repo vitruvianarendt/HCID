@@ -50,7 +50,8 @@ urlpatterns = [
     path('paleonthology/basic/video/', pal1tutorial, name="pal1tutorial"),
     path('paleonthology/intermediate/video/', pal2tutorial, name="pal2tutorial"),
     path('paleonthology/advanced/video/', pal3tutorial, name="pal3tutorial"),
+    path('quiz/', quiz, name="quiz"),
+    path('results/', results, name="results"),
     path('admin/', admin.site.urls),
-    # url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

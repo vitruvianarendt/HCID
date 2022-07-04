@@ -211,6 +211,7 @@
                                     structure of elements and compounds, how they can change, and the energy that is
                                     released or absorbed when they change. <br> <br> Pick age group below!
                                 </li>
+
                                 <li><a class="dropdown-item active" href="{% url 'chem1' %}">5-8 Basic Complexity</a>
                                 </li>
                                 <li><a class="dropdown-item" href="{% url 'chem2' %}">8-12 Moderate Complexity</a></li>
@@ -235,6 +236,9 @@
                             </svg>
                         </a></li>
                         {% if user.is_authenticated %}
+                                                        <li><a class="dropdown-item" href="{% url 'results' %}"> See all previously attempted
+                                quizzes!
+                            </a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}"> Logout
                             </a></li>
                         {% else %}
@@ -277,8 +281,9 @@
 
         <button class="watch"><a style="background-color: transparent; text-decoration: none; padding: 20px; color: #3c096c"
                                  href="{% url 'chem3' %}">Go back to course!</a></button>
-        <button class="watch">Take quiz!</button>
-    </div>
+<button class="watch"><a
+                style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c"
+                href="{% url 'quiz' %}">Take quiz!</a></button>    </div>
 </div>
 </body>
 </html>

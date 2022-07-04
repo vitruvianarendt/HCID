@@ -93,6 +93,7 @@
         svg {
             margin-left: 20px;
         }
+
         h2 li {
             text-decoration: none;
             font-size: medium;
@@ -101,6 +102,7 @@
             border-top: solid 1px;
             border-bottom: none;
         }
+
         #subtitle {
             border: none;
             font-size: large;
@@ -232,6 +234,9 @@
                             </svg>
                         </a></li>
                         {% if user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{% url 'results' %}"> See all previously attempted
+                                quizzes!
+                            </a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}"> Logout
                             </a></li>
                         {% else %}
@@ -269,8 +274,12 @@
             <p class="lead"></p>
         </div>
 
-        <button class="watch" ><a style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c" href="{% url 'pal2tutorial' %}">Watch video experiment or tutorial!</a></button>
-        <button class="watch">Take quiz!</button>
+        <button class="watch"><a
+                style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c"
+                href="{% url 'pal2tutorial' %}">Watch video experiment or tutorial!</a></button>
+        <button class="watch"><a
+                style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c"
+                href="{% url 'quiz' %}">Take quiz!</a></button>
     </div>
 </div>
 </body>

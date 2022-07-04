@@ -222,6 +222,9 @@
                             </svg>
                         </a></li>
                         {% if user.is_authenticated %}
+                                                        <li><a class="dropdown-item" href="{% url 'results' %}"> See all previously attempted
+                                quizzes!
+                            </a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}"> Logout
                             </a></li>
                         {% else %}

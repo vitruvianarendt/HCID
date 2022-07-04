@@ -1,4 +1,3 @@
-{% load embed_video_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,6 +64,8 @@
             border-bottom-left-radius: 10px;
             margin-bottom: 0;
             padding-bottom: 20px;
+            background-color: #9d4edd;
+
         }
 
         .jumbotron a {
@@ -82,13 +83,15 @@
             padding-top: 20px;
         }
 
-        .dropdown-menu li {
-            background-color: white;
+        .controls ul li {
+            font-size: small;
+            list-style-type: none;
+            border-bottom: none;
+            padding: 0;
         }
 
-        .dropdown {
-            border-bottom: solid 1px;
-
+        .dropdown-menu li {
+            background-color: white;
         }
 
         h2 li {
@@ -98,6 +101,11 @@
             list-style-type: none;
             border-top: solid 1px;
             border-bottom: none;
+        }
+
+        .dropdown {
+            border-bottom: solid 1px;
+
         }
 
         svg {
@@ -114,17 +122,31 @@
             margin-top: 50px;
         }
 
-        .watch {
-            margin-top: 100px;
-            margin-right: 50px;
-            padding: 20px;
-            border: none;
-            border-radius: 10px;
-        }
 
         .dropdown-item.active {
             background-color: #3c096c;
         }
+
+
+        .bg-custom {
+            background-color: #9d4edd;
+            padding: 20px 0 20px 0;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+        }
+
+        .custom-form {
+            width: 40%;
+            text-align: center;
+            padding: 30px !important;
+            border-radius: 10px;
+        }
+
+        .btn {
+            background-color: #c8e7ff;
+        }
+
     </style>
 </head>
 <body>
@@ -154,7 +176,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown"
                                role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
                                 Technology & Programming
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
@@ -162,10 +184,11 @@
                                     aims of human
                                     life.<br> <br> Pick age group below!
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'tech1' %}">5-8 Basic
-                                    Complexity</a></li>
+                                <li><a class="dropdown-item" href="{% url 'tech1' %}">5-8 Basic Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'tech2' %}">8-12 Moderate Complexity</a></li>
-                                <li><a class="dropdown-item" href="{% url 'tech3' %}">12+ High Complexity</a></li>
+                                <li><a class="dropdown-item" href="{% url 'tech3' %}" aria-current="page">12+
+                                    High
+                                    Complexity</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -200,8 +223,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="offcanvasNavbarDropdown"
-                               role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Chemistry
                             </a>
@@ -211,8 +233,7 @@
                                     structure of elements and compounds, how they can change, and the energy that is
                                     released or absorbed when they change. <br> <br> Pick age group below!
                                 </li>
-                                <li><a class="dropdown-item active" href="{% url 'chem1' %}">5-8 Basic Complexity</a>
-                                </li>
+                                <li><a class="dropdown-item" href="{% url 'chem1' %}">5-8 Basic Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'chem2' %}">8-12 Moderate Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'chem3' %}">12+ High Complexity</a></li>
                             </ul>
@@ -235,7 +256,7 @@
                             </svg>
                         </a></li>
                         {% if user.is_authenticated %}
-                                                        <li><a class="dropdown-item" href="{% url 'results' %}"> See all previously attempted
+                            <li><a class="dropdown-item" href="{% url 'results' %}" active> See all previously attempted
                                 quizzes!
                             </a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}"> Logout
@@ -258,34 +279,18 @@
                     <a class="nav-link" href="#">Welcome, {{ user.username }}</a>
                 </li>
             {% endif %}</h2>
-
-
     </nav>
 
-    <div class="jumbotron p-4 text-left">
-        <div id="div1">
-            <div class="p-4 border-top-custom">
-                <h5>{{ courses.7.topic.title }}</h5>
-                <h5>Suitable for kids {{ courses.7.age.title }} years old!</h5>
-            </div>
-            <div class="p-4">
-                {{ courses.7.videodescription }}
-            </div>
-
-            <div style="float: right; margin-right: 20%;">
-                {% video courses.7.tutorial_Video 'tiny' %}
-            </div>
-            <p class="lead"></p>
+    {% if user.is_authenticated %}
+        <div class="bg-custom">
+            {% for quiz in quizzes %}
+                <div class="container custom-form mb-2">
+                    <h5>Quiz taken in the field of {{ quiz.topic.title }} <br>{{ quiz.date }}</h5>
+                    <h3>Score: {{ quiz.points }} %</h3>
+                </div>
+            {% endfor %}
         </div>
-
-        <button class="watch"><a style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c"
-                                 href="{% url 'pal2' %}">Go back to course!</a></button>
-<button class="watch"><a
-                style="background-color: transparent; padding: 20px; text-decoration: none; color: #3c096c"
-                href="{% url 'quiz' %}">Take quiz!</a></button>    </div>
+    {% endif %}
 </div>
 </body>
 </html>
-
-
-

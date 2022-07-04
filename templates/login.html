@@ -90,6 +90,7 @@
         .dropdown-menu li {
             background-color: white;
         }
+
         h2 li {
             text-decoration: none;
             font-size: medium;
@@ -98,6 +99,7 @@
             border-top: solid 1px;
             border-bottom: none;
         }
+
         .dropdown {
             border-bottom: solid 1px;
 
@@ -176,7 +178,7 @@
                         </a></li>
                         <li id="subtitle">Scientific Topics</li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="offcanvasNavbarDropdown"
+                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown"
                                role="button"
                                data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
                                 Technology & Programming
@@ -188,7 +190,7 @@
                                 </li>
                                 <li><a class="dropdown-item" href="{% url 'tech1' %}">5-8 Basic Complexity</a></li>
                                 <li><a class="dropdown-item" href="{% url 'tech2' %}">8-12 Moderate Complexity</a></li>
-                                <li><a class="dropdown-item active" href="{% url 'tech3' %}" aria-current="page">12+
+                                <li><a class="dropdown-item" href="{% url 'tech3' %}" aria-current="page">12+
                                     High
                                     Complexity</a></li>
                             </ul>
@@ -258,10 +260,13 @@
                             </svg>
                         </a></li>
                         {% if user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{% url 'results' %}"> See all previously attempted
+                                quizzes!
+                            </a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}"> Logout
                             </a></li>
                         {% else %}
-                            <li><a class="dropdown-item" href="{% url 'login' %}"> Login
+                            <li><a class="dropdown-item" href="{% url 'login' %}" active> Login
                             </a></li>
                             <li><a class="dropdown-item" href="{% url 'register' %}"> Register
                             </a></li>
@@ -291,7 +296,7 @@
                 <form method="POST">
                     {% csrf_token %}
                     {{ login_form|crispy }}
-                    <button class="btn mt-4 mb-4" type="submit">Register</button>
+                    <button class="btn mt-4 mb-4" type="submit">Login</button>
                 </form>
                 <p class="text-center">Don't have an account? <a class="login" href="{% url 'register' %}">Create an
                     account</a>.</p>

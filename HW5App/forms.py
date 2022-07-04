@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 
 
 # Create your forms here.
+from HW5App.models import Quiz
+
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -18,3 +20,15 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class QuizForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(QuizForm, self).__init__(*args, **kwargs)
+        for field in self.visible_fields():
+            print(field)
+
+    class Meta:
+        model = Quiz
+        exclude = ("user", "points", )

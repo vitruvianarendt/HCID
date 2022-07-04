@@ -1,11 +1,13 @@
+from random import randint
+
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from HW5App.forms import NewUserForm
-from HW5App.models import Course
+from HW5App.forms import NewUserForm, QuizForm
+from HW5App.models import Course, Quiz
 
 
 def index(request):
@@ -335,3 +337,33 @@ def logout_request(request):
     messages.info(request, "You have successfully logged out.")
     return redirect("index")
 
+
+def quiz(request):
+    if request.method == "POST":
+        form_data = QuizForm(data=request.POST, files=request.FILES)
+        if form_data.is_valid():
+            post = form_data.save(commit=False)
+            post.user = request.user
+            post.points = randint(40, 100)
+            post.save()
+            return redirect("results")
+    list1 = request.META.get('HTTP_REFERER')
+    url=''
+    if list1 is not None:
+        list2 = list1.split('/')
+        n = 3
+        newlist = list2[n:]
+        url = ''.join(newlist)
+
+    context = {"quiz": QuizForm, "url": url}
+    return render(request, "quiz.html", context=context)
+
+
+def results(request):
+    try:
+        all_quizzes = Quiz.objects.filter(user=request.user)
+    except Quiz.DoesNotExist:
+        all_quizzes = None
+
+    context = {"quizzes": all_quizzes}
+    return render(request, "results.html", context=context)
